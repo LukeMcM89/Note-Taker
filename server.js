@@ -3,6 +3,8 @@ const application = express ();
 const path = require ("path");
 const fs = require ('fs');
 
+const PORT = process.env.PORT || 3000;
+
 //Redirecting static file reqs to public file path
 application.use(express.static("public"));
 //Allows server to accept data sent from FrontEnd
@@ -41,8 +43,8 @@ application.get('/',(req,res) => {
     res.sendFile(path.join(__dirname,"/public/index.html"));
 });
 
-application.listen(3000, () => {
-    console.log("server listening on port 3000");
+application.listen(PORT, () => {
+    console.log(`Server listening on http://localhost:${PORT}`);
 });
 
 function getData () {
